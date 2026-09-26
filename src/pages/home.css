@@ -1,0 +1,466 @@
+/* ------------------------------------------------------------------
+   Home page
+   ------------------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  padding-block: clamp(3rem, 8vw, 6.5rem) clamp(3rem, 7vw, 5.5rem);
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  max-width: 860px;
+  text-align: center;
+}
+
+.hero__title {
+  margin: var(--s-4) auto var(--s-5);
+  max-width: 24ch;
+}
+
+.hero__lede {
+  margin-inline: auto;
+  text-align: center;
+  max-width: 58ch;
+}
+
+.hero__search {
+  margin: var(--s-6) auto 0;
+  max-width: 760px;
+  text-align: left;
+}
+
+.hero__try {
+  margin-top: var(--s-5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero__try .eyebrow {
+  margin-right: 0.25rem;
+}
+
+/* --- stats ------------------------------------------------------------ */
+
+.stats {
+  padding-block: var(--s-6) var(--s-8);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s-6);
+  align-items: end;
+}
+
+.stats__lead {
+  grid-column: span 4;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  max-width: 34ch;
+}
+
+.stats__grid .stat {
+  grid-column: span 2;
+}
+
+@media (max-width: 1000px) {
+  .stats__lead {
+    grid-column: 1 / -1;
+  }
+
+  .stats__grid .stat {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats__grid .stat {
+    grid-column: span 6;
+  }
+}
+
+/* --- problem ---------------------------------------------------------- */
+
+.problem__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--s-8);
+  align-items: start;
+}
+
+.problem__title {
+  margin-top: var(--s-3);
+  max-width: 20ch;
+}
+
+.problem__text {
+  padding-top: 2.3rem;
+  color: var(--ink-2);
+  max-width: 58ch;
+}
+
+.problem__text .arrow-link {
+  margin-top: var(--s-3);
+}
+
+@media (max-width: 860px) {
+  .problem__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+
+  .problem__text {
+    padding-top: 0;
+  }
+}
+
+/* --- pipeline --------------------------------------------------------- */
+
+.pipeline__head {
+  max-width: 34ch;
+}
+
+.pipeline__head .h2 {
+  margin-top: var(--s-3);
+}
+
+.pipeline__steps {
+  margin-top: var(--s-7);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--s-5);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line-strong);
+}
+
+.step__num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.step__title {
+  margin-top: 0.4rem;
+  font-weight: 600;
+  font-size: var(--text-base);
+}
+
+.step__text {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+.principles {
+  margin-top: var(--s-7);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-5);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  max-width: 1000px;
+}
+
+.principles strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .pipeline__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .pipeline__steps,
+  .principles {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- ways in (bento) -------------------------------------------------- */
+
+.ways__head {
+  max-width: 40ch;
+  margin-bottom: var(--s-6);
+}
+
+.ways__head .h2 {
+  margin-top: var(--s-3);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+
+.bento__cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+  border-radius: var(--radius-lg);
+  background: var(--paper-2);
+  color: var(--ink);
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.bento__cell:hover {
+  transform: translateY(-2px);
+  background: var(--paper-3);
+}
+
+.bento__cell--wide {
+  grid-column: span 7;
+}
+
+.bento__cell--narrow {
+  grid-column: span 5;
+}
+
+.bento__cell--ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.bento__cell--ink:hover {
+  background: var(--accent-deep);
+}
+
+.bento__cell .h3 {
+  max-width: 22ch;
+}
+
+.bento__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-3);
+}
+
+.bento__foot {
+  margin-top: auto;
+  padding-top: var(--s-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.bento__cell--graph {
+  overflow: hidden;
+}
+
+.graph-sketch {
+  margin-top: auto;
+  width: min(100%, 340px);
+  align-self: flex-end;
+}
+
+.mini {
+  margin-top: auto;
+  padding-top: var(--s-3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.mini__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  align-items: center;
+  gap: var(--s-4);
+  font-size: var(--text-sm);
+}
+
+.mini__name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 860px) {
+  .bento__cell--wide,
+  .bento__cell--narrow {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- evidence --------------------------------------------------------- */
+
+.evidence__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: var(--s-8);
+  align-items: start;
+}
+
+.evidence__grid .h2 {
+  margin-top: var(--s-3);
+  max-width: 16ch;
+}
+
+.evidence__text {
+  margin-top: var(--s-4);
+  color: var(--ink-4);
+  max-width: 44ch;
+}
+
+.evidence__text + .arrow-link {
+  margin-top: var(--s-2);
+}
+
+.sources {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--s-6);
+}
+
+.sources__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 var(--s-3);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(247, 244, 238, 0.12);
+}
+
+.sources__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: 1.1;
+}
+
+.sources__records {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-4);
+  text-align: right;
+  align-self: center;
+}
+
+.sources__role {
+  grid-column: 1 / -1;
+  font-size: var(--text-xs);
+  color: var(--ink-4);
+  margin-top: 0.2rem;
+}
+
+.section--ink .skeleton {
+  background: rgba(247, 244, 238, 0.12);
+}
+
+@media (max-width: 860px) {
+  .evidence__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  .sources {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- performance ------------------------------------------------------ */
+
+.perf__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--s-8);
+  align-items: center;
+}
+
+.perf__row {
+  margin-top: var(--s-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-6) var(--s-8);
+}
+
+.perf__text {
+  margin-top: var(--s-5);
+  color: var(--ink-2);
+  max-width: 56ch;
+}
+
+.perf__curve {
+  max-width: 420px;
+  justify-self: end;
+  width: 100%;
+}
+
+.pr-curve {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 860px) {
+  .perf__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  .perf__curve {
+    justify-self: start;
+  }
+}
+
+/* --- pillars ---------------------------------------------------------- */
+
+.pillars {
+  background: var(--paper-2);
+}
+
+.pillars__list {
+  margin-top: var(--s-5);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-5);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+.pillars__list strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .pillars__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .pillars__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- cta -------------------------------------------------------------- */
+
+.cta__inner {
+  text-align: center;
+}
+
+.cta__search {
+  margin: var(--s-6) auto 0;
+  max-width: 640px;
+  text-align: left;
+}

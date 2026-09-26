@@ -1,0 +1,463 @@
+/* ------------------------------------------------------------------
+   Database page
+   ------------------------------------------------------------------ */
+
+/* --- head --------------------------------------------------------------- */
+
+.db-head .lede {
+  max-width: 64ch;
+}
+
+.db-lookup {
+  margin-top: var(--s-6);
+  max-width: 640px;
+}
+
+.db-lookup__label {
+  margin-bottom: var(--s-2);
+}
+
+/* --- index at a glance -------------------------------------------------- */
+
+.db-index {
+  padding-block: var(--s-3) var(--s-8);
+}
+
+.db-index__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s-6) var(--s-5);
+  align-items: end;
+}
+
+.db-index__grid .stat {
+  grid-column: span 2;
+}
+
+.db-index__built {
+  grid-column: span 2;
+  justify-self: end;
+  align-self: end;
+  margin: 0;
+  padding-bottom: 0.4rem;
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 1000px) {
+  .db-index__grid .stat {
+    grid-column: span 4;
+  }
+
+  .db-index__built {
+    grid-column: 1 / -1;
+    justify-self: start;
+    text-align: left;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .db-index__grid .stat {
+    grid-column: span 6;
+  }
+}
+
+/* --- section head (eyebrow left, lead right) ---------------------------- */
+
+.db-sec__head {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--s-4) var(--s-6);
+  align-items: end;
+  margin-bottom: var(--s-6);
+}
+
+.db-sec__lead {
+  margin: 0;
+  font-size: var(--text-md);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+
+@media (max-width: 860px) {
+  .db-sec__head {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+}
+
+/* --- sources table ------------------------------------------------------ */
+
+.db-src__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.db-src__name svg {
+  color: var(--ink-4);
+}
+
+.db-src__name:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.db-src__desc {
+  margin-top: 0.25rem;
+  max-width: 44ch;
+  line-height: 1.45;
+}
+
+.db-src__records {
+  white-space: nowrap;
+}
+
+.db-sources .table td {
+  vertical-align: top;
+}
+
+.db-sources .table td:first-child {
+  min-width: 18rem;
+}
+
+/* Stacked rows under 720px */
+@media (max-width: 720px) {
+  .db-sources .table thead {
+    display: none;
+  }
+
+  .db-sources .table tbody,
+  .db-sources .table tr {
+    display: block;
+  }
+
+  .db-sources .table tr {
+    padding-block: var(--s-4);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .db-sources .table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .db-sources .table td {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 0 var(--s-3);
+    padding: 0.3rem 0;
+    border-bottom: 0;
+    min-width: 0;
+  }
+
+  .db-sources .table td::before {
+    content: attr(data-label);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-family: var(--font-body);
+    padding-top: 0.15em;
+  }
+
+  .db-sources .table td:first-child {
+    display: block;
+    min-width: 0;
+    padding-bottom: 0.6rem;
+  }
+
+  .db-sources .table td:first-child::before {
+    display: none;
+  }
+
+  .db-sources .table--hover tbody tr:hover {
+    background: transparent;
+  }
+}
+
+/* --- edge composition --------------------------------------------------- */
+
+.db-edges__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--s-8);
+  align-items: start;
+}
+
+.db-edges__text .h2 {
+  margin-top: var(--s-3);
+  max-width: 16ch;
+}
+
+.db-edges__note {
+  margin-top: var(--s-4);
+  color: var(--ink-2);
+  max-width: 48ch;
+}
+
+.db-edges__chart {
+  padding-top: 0.4rem;
+}
+
+.db-bar-wrap {
+  height: 36px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--paper-3);
+}
+
+.db-bar {
+  width: 100%;
+  height: 100%;
+}
+
+.db-legend {
+  margin-top: var(--s-5);
+}
+
+.db-legend__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--s-4);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: var(--text-sm);
+}
+
+.db-legend__item:last-child {
+  border-bottom: 0;
+}
+
+.db-legend__swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: none;
+}
+
+.db-legend__type {
+  font-weight: 500;
+}
+
+.db-legend__count {
+  text-align: right;
+  min-width: 7ch;
+}
+
+.db-legend__pct {
+  text-align: right;
+  min-width: 5ch;
+}
+
+@media (max-width: 860px) {
+  .db-edges__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+}
+
+/* --- 4/8 split (matrices, tables) --------------------------------------- */
+
+.db-split {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--s-6) var(--s-8);
+  align-items: start;
+}
+
+.db-split__side {
+  position: sticky;
+  top: var(--s-6);
+}
+
+.db-split__text {
+  margin-top: var(--s-3);
+  color: var(--ink-2);
+  max-width: 34ch;
+}
+
+.db-split__main {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .db-split {
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+
+  .db-split__side {
+    position: static;
+  }
+
+  .db-split__text {
+    max-width: 60ch;
+  }
+}
+
+/* --- feature matrices --------------------------------------------------- */
+
+.db-matrices__name {
+  font-weight: 500;
+}
+
+.db-matrices .table td.mono {
+  white-space: nowrap;
+}
+
+.db-matrices .table th:first-child,
+.db-matrices .table td:first-child {
+  padding-left: 0;
+}
+
+/* --- standardised tables ------------------------------------------------ */
+
+.db-file {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 4fr) auto;
+  gap: var(--s-3) var(--s-5);
+  align-items: start;
+  padding-block: var(--s-4);
+  border-top: 1px solid var(--line);
+}
+
+.db-file:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.db-file__name {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.db-file__desc {
+  margin-top: 0.3rem;
+  max-width: 40ch;
+  line-height: 1.45;
+}
+
+.db-file__cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding-top: 0.15rem;
+}
+
+.db-file__rows {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 4.5ch;
+  text-align: right;
+}
+
+.db-file__rows-n {
+  font-size: var(--text-md);
+  line-height: 1.2;
+}
+
+@media (max-width: 720px) {
+  .db-file {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .db-file__cols {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- preprocessing (ink section) ---------------------------------------- */
+
+.db-prep__head {
+  max-width: 40ch;
+}
+
+.db-prep__head .h2 {
+  margin-top: var(--s-3);
+}
+
+.db-prep__list {
+  margin-top: var(--s-7);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-6) var(--s-8);
+  max-width: 1000px;
+}
+
+.db-prep__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: var(--ink-4);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+
+.db-prep__item strong {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.db-prep .skeleton {
+  background: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+
+@media (max-width: 720px) {
+  .db-prep__list {
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+}
+
+/* --- closing note ------------------------------------------------------- */
+
+.db-note {
+  padding-block: var(--s-7) 0;
+}
+
+.db-note .notice {
+  max-width: 72ch;
+}
+
+/* --- skeleton helpers --------------------------------------------------- */
+
+.db-sk {
+  display: inline-block;
+  min-height: 1em;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.db-sk + .db-sk {
+  margin-left: 0.35rem;
+}
+
+.db-sk-para {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: var(--s-4);
+}
+
+.db-sk-para .db-sk + .db-sk,
+.db-file__cols .db-sk + .db-sk {
+  margin-left: 0;
+}
